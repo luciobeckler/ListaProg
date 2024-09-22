@@ -150,15 +150,29 @@ public class Arvore {
     }
   }
 
-  public void ContaNos() {
-    System.out.println(ContaNos(raiz));
+  public void ContaNosTotais() {
+    System.out.println("Quantidade ne nós totais: " + ContaNosTotais(raiz));
   }
 
-  private int ContaNos(No elemento) {
+  private int ContaNosTotais(No elemento) {
     if (elemento == null)
       return 0;
 
-    return 1 + ContaNos(elemento.direita) + ContaNos(elemento.esquerda);
+    return 1 + ContaNosTotais(elemento.direita) + ContaNosTotais(elemento.esquerda);
+  }
+
+  public void ContaNosNaoFolhas() {
+    System.err.println("Quantidade de nós não folhas:" + ContaNosNaoFolhas(raiz));
+  }
+
+  private int ContaNosNaoFolhas(No elemento) {
+    if (elemento == null)
+      return 0;
+
+    if (elemento.direita != null || elemento.esquerda != null)
+      return 1 + ContaNosNaoFolhas(elemento.direita) + ContaNosNaoFolhas(elemento.esquerda);
+
+    return 0;
   }
   // #endregio
 
