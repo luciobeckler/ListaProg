@@ -188,7 +188,25 @@ public class Arvore {
       return 1 + ContaNosFolhas(elemento.direita) + ContaNosFolhas(elemento.esquerda);
     else
       return 0 + ContaNosFolhas(elemento.direita) + ContaNosFolhas(elemento.esquerda);
+  }
 
+  public void CalculaAltura() {
+    System.err.println("A altura da árvore é:" + CalculaAltura(raiz));
+  }
+
+  private int CalculaAltura(No elemento) {
+    int tamanhoDireita = 0;
+    int tamanhoEsquerda = 0;
+
+    if (elemento == null)
+      return 0;
+
+    if (elemento.direita != null)
+      tamanhoDireita = 1 + CalculaAltura(elemento.direita);
+    if (elemento.esquerda != null)
+      tamanhoEsquerda = 1 + CalculaAltura(elemento.esquerda);
+
+    return tamanhoDireita > tamanhoEsquerda ? tamanhoDireita : tamanhoEsquerda;
   }
 
   // #endregio

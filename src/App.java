@@ -13,12 +13,14 @@ public class App {
         arvore.Inserir(10);
         arvore.Inserir(14);
         arvore.Inserir(13);
+        arvore.Inserir(12);
+        arvore.Inserir(9);
 
         arvore.EmOrdem();
 
         arvore.ContaNosTotais(); // ! Questão 1
         arvore.ContaNosNaoFolhas(); // ! Questão 2
         arvore.ContaNosFolhas(); // ! Questão 3
-
+        arvore.CalculaAltura(); // ! Questao 4
     }
 }
