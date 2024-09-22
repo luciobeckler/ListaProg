@@ -18,6 +18,7 @@ public class App {
 
         arvore.ContaNosTotais(); // ! Questão 1
         arvore.ContaNosNaoFolhas(); // ! Questão 2
+        arvore.ContaNosFolhas(); // ! Questão 3
 
     }
 }

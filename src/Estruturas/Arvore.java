@@ -174,6 +174,23 @@ public class Arvore {
 
     return 0;
   }
+
+  public void ContaNosFolhas() {
+    System.err.println("Quantidade de nós folhas: " + ContaNosFolhas(raiz));
+  }
+
+  private int ContaNosFolhas(No elemento) { // Tive que me segurar aqui pra não meter um ContaNosTotais -
+                                            // ContaNosNaoFolhas
+    if (elemento == null)
+      return 0;
+
+    if (elemento.direita == null && elemento.esquerda == null)
+      return 1 + ContaNosFolhas(elemento.direita) + ContaNosFolhas(elemento.esquerda);
+    else
+      return 0 + ContaNosFolhas(elemento.direita) + ContaNosFolhas(elemento.esquerda);
+
+  }
+
   // #endregio
 
 }
