@@ -10,5 +10,6 @@ public class App {
 
         arvore.EmOrdem();
 
+        arvore.ContaNos();
     }
 }

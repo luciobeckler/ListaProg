@@ -149,6 +149,17 @@ public class Arvore {
       EmOrdem(elemento.direita);
     }
   }
+
+  public void ContaNos() {
+    System.out.println(ContaNos(raiz));
+  }
+
+  private int ContaNos(No elemento) {
+    if (elemento == null)
+      return 0;
+
+    return 1 + ContaNos(elemento.direita) + ContaNos(elemento.esquerda);
+  }
   // #endregio
 
 }
