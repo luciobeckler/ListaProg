@@ -1,6 +1,7 @@
 package Estruturas;
 
 import javax.swing.text.DefaultStyledDocument.ElementSpec;
+import java.util.Stack;
 
 public class Arvore {
   No raiz;
@@ -223,11 +224,19 @@ public class Arvore {
 
   public void RemoveElementosPares() {
     RemoveElementosPares(raiz);
-    System.err.println("Questão 5 ainda em desenvolvimento");
   }
 
-  private No RemoveElementosPares(No elemento) {
-    return new No(0);
+  private void RemoveElementosPares(No elemento) {
+    if (elemento == null) {
+      return;
+    }
+
+    RemoveElementosPares(elemento.direita);
+    RemoveElementosPares(elemento.esquerda);
+
+    if (elemento.valor % 2 == 0) {
+      remover(elemento.valor);
+    }
   }
 
   public void EspelhaArvore() {
@@ -247,10 +256,6 @@ public class Arvore {
 
     EspelhaArvore(elemento.direita);
     EspelhaArvore(elemento.esquerda);
-  }
-
-  public void PreOrdemNaoRecursiva() {
-
   }
 
   // #endregio
