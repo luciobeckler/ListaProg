@@ -18,9 +18,16 @@ public class App {
 
         arvore.EmOrdem();
 
+        arvore.remover(20);
+
+        arvore.EmOrdem();
+
         arvore.ContaNosTotais(); // ! Questão 1
         arvore.ContaNosNaoFolhas(); // ! Questão 2
         arvore.ContaNosFolhas(); // ! Questão 3
         arvore.CalculaAltura(); // ! Questao 4
+        // arvore.RemoveElementosPares(); // ! Questão 5
+        // arvore.EmOrdem();
+        arvore.EspelhaArvore(); // ! Questão 6
     }
 }

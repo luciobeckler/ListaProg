@@ -1,5 +1,7 @@
 package Estruturas;
 
+import javax.swing.text.DefaultStyledDocument.ElementSpec;
+
 public class Arvore {
   No raiz;
 
@@ -29,57 +31,67 @@ public class Arvore {
 
   // #region Remoção
   public boolean remover(int novoValor) {
-    if (raiz == null)
+    if (raiz == null) {
       return false;
-    else {
-      No pai;
-      No noX;
-      if (raiz.valor == novoValor) {
-        pai = raiz;
-        noX = raiz;
-      } else {
-
-        pai = encontrarElemento(raiz, novoValor);
-        if (pai.valor < novoValor)
-          noX = pai.direita;
-        else
-          noX = pai.esquerda;
-      }
-
-      if (noX.direita == null && noX.esquerda == null) {
-        if (pai.valor < novoValor)
-          pai.direita = null;
-        else
-          pai.esquerda = null;
-
-      } else {
-        if (noX.direita != null && noX.esquerda != null) {
-          No noPaiDireitaEsquerda = maisEsquerdaPossivel(noX, noX.direita);
-          No substituto = noPaiDireitaEsquerda.esquerda;
-          noPaiDireitaEsquerda.esquerda = null;
-          substituto.direita = noX.direita;
-          substituto.esquerda = noX.esquerda;
-          noX.esquerda = null;
-          noX.direita = null;
-
-        } else {
-          if (noX.direita == null) {
-            if (pai.valor > novoValor)
-              pai.direita = noX.esquerda;
-            else
-              pai.esquerda = noX.esquerda;
-          }
-          if (noX.esquerda == null) {
-            if (pai.valor > novoValor)
-              pai.direita = noX.direita;
-            else
-              pai.esquerda = noX.direita;
-          }
-
-        }
-      }
-      return true;
     }
+
+    No pai = null;
+    No noX = raiz;
+
+    while (noX != null && noX.valor != novoValor) {
+      pai = noX;
+      if (novoValor < noX.valor) {
+        noX = noX.esquerda;
+      } else {
+        noX = noX.direita;
+      }
+    }
+
+    if (noX == null) {
+      return false;
+    }
+
+    if (noX.esquerda == null && noX.direita == null) {
+      if (pai == null) {
+        raiz = null;
+      } else if (pai.esquerda == noX) {
+        pai.esquerda = null;
+      } else {
+        pai.direita = null;
+      }
+    }
+
+    else if (noX.esquerda == null || noX.direita == null) {
+      No filho = (noX.esquerda != null) ? noX.esquerda : noX.direita;
+
+      if (pai == null) {
+        raiz = filho;
+      } else if (pai.esquerda == noX) {
+        pai.esquerda = filho;
+      } else {
+        pai.direita = filho;
+      }
+    }
+
+    else {
+      No paiSucessor = noX;
+      No sucessor = noX.direita;
+
+      while (sucessor.esquerda != null) {
+        paiSucessor = sucessor;
+        sucessor = sucessor.esquerda;
+      }
+
+      noX.valor = sucessor.valor;
+
+      if (paiSucessor.esquerda == sucessor) {
+        paiSucessor.esquerda = sucessor.direita;
+      } else {
+        paiSucessor.direita = sucessor.direita;
+      }
+    }
+
+    return true;
   }
 
   No encontrarElemento(No atual, int valor) {
@@ -207,6 +219,38 @@ public class Arvore {
       tamanhoEsquerda = 1 + CalculaAltura(elemento.esquerda);
 
     return tamanhoDireita > tamanhoEsquerda ? tamanhoDireita : tamanhoEsquerda;
+  }
+
+  public void RemoveElementosPares() {
+    RemoveElementosPares(raiz);
+    System.err.println("Questão 5 ainda em desenvolvimento");
+  }
+
+  private No RemoveElementosPares(No elemento) {
+    return new No(0);
+  }
+
+  public void EspelhaArvore() {
+    System.out.println("A árvore espelhada ficou assim:");
+    EspelhaArvore(raiz);
+  }
+
+  private void EspelhaArvore(No elemento) {
+    if (elemento == null) {
+      return;
+    }
+
+    No aux = new No(0);
+    aux = elemento.direita;
+    elemento.direita = elemento.esquerda;
+    elemento.esquerda = aux;
+
+    EspelhaArvore(elemento.direita);
+    EspelhaArvore(elemento.esquerda);
+  }
+
+  public void PreOrdemNaoRecursiva() {
+
   }
 
   // #endregio
