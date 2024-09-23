@@ -1,8 +1,5 @@
 package Estruturas;
 
-import javax.swing.text.DefaultStyledDocument.ElementSpec;
-import java.util.Stack;
-
 public class Arvore {
   No raiz;
 
@@ -114,11 +111,6 @@ public class Arvore {
     }
   }
 
-  private No maisEsquerdaPossivel(No pai, No filhoAtual) {
-    if (filhoAtual.esquerda == null)
-      return pai;
-    return maisEsquerdaPossivel(filhoAtual, filhoAtual.esquerda);
-  }
   // #endregion
 
   // #region Exibição

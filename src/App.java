@@ -18,13 +18,15 @@ public class App {
 
         arvore.EmOrdem();
 
-        arvore.ContaNosTotais(); // ! Questão 1
-        arvore.ContaNosNaoFolhas(); // ! Questão 2
-        arvore.ContaNosFolhas(); // ! Questão 3
-        arvore.CalculaAltura(); // ! Questao 4
-        arvore.RemoveElementosPares(); // ! Questão 5
+        arvore.ContaNosTotais(); // Questão 1
+        arvore.ContaNosNaoFolhas(); // Questão 2
+        arvore.ContaNosFolhas(); // Questão 3
+        arvore.CalculaAltura(); // Questao 4
+        System.out.println("Fazendo a remoção dos elementos");
+        arvore.RemoveElementosPares(); // Questão 5
         arvore.EmOrdem();
-        arvore.EspelhaArvore(); // ! Questão 6
-        // ! Questâo 7 não consegui fazer sem o auxílio de IA
+        arvore.EspelhaArvore(); // Questão 6
+        arvore.EmOrdem();
+        // Questâo 7 não consegui fazer sem o auxílio de IA
     }
 }
