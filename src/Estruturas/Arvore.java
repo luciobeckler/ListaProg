@@ -1,5 +1,10 @@
 package Estruturas;
 
+import java.lang.annotation.ElementType;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 public class Arvore {
   No raiz;
 
@@ -143,6 +148,43 @@ public class Arvore {
   public void EmOrdem() {
     EmOrdem(raiz);
     System.out.println();
+  }
+
+  public void PreOrdemSemRecursao() {
+    if (raiz == null)
+      return;
+
+    Queue<No> fila = new LinkedList<>();
+
+    No backup = raiz;
+    while (backup != null || !fila.isEmpty()) {
+      fila.add(backup);
+
+      while (backup.esquerda != null) {
+        fila.add(backup.esquerda);
+        backup = backup.esquerda;
+      }
+
+    }
+  }
+
+  public void EmOrdemSemRecursao() {
+    if (raiz == null)
+      return;
+
+    Stack<No> pilha = new Stack<>();
+    No backup = raiz;
+
+    while (backup != null || !pilha.isEmpty()) {
+      while (backup != null) {
+        pilha.push(backup);
+        backup = backup.esquerda;
+      }
+
+      backup = pilha.pop();
+      System.out.println(backup.valor);
+      backup = backup.direita;
+    }
   }
 
   private void EmOrdem(No elemento) {

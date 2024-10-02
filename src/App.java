@@ -27,6 +27,6 @@ public class App {
         arvore.EmOrdem();
         arvore.EspelhaArvore(); // Questão 6
         arvore.EmOrdem();
-        // Questâo 7 não consegui fazer sem o auxílio de IA
+        arvore.EmOrdemSemRecursao(); // Questao 7
     }
 }
